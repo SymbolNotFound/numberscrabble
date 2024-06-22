@@ -4,6 +4,8 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Number Scrabble",
   description: "play a classic mathematics game against the computer",
+  base: "/number-scrabble/",
+  lang: "en-US",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
