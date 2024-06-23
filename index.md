@@ -18,3 +18,9 @@ hero:
       link: /howto
 ---
 
+<style>
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(99deg, #41d1ff, #bd34fe);
+}
+</style>

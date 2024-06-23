@@ -36,7 +36,7 @@ Then begin the setup wizard:
 npx vitepress init
 ```
 
-This will ask a few simple questions.  Don't worry much about the exact wording
+This will ask a few simple questions.  Don't worry too much about the exact wording
 of the title or description, these can easily be changed later.
 
 You can still customize the layout and theme if you selected "default theme" but
@@ -44,8 +44,9 @@ it is a little easier to customize from one of the other two options because
 they fill out some boilerplate for you (the .vitepress/theme folder contents).
 
 For this tutorial we can use the default theme, but if you have custom components
-that you want to reuse across pages, "default with customization" or "custom theme"
-are the better options.
+that you want to reuse across pages, use "default with customization."
+If you want to make large changes to the site's layout and color palette,
+"custom theme" is the better option.
 
 ## Deploying to GitHub Pages
 
@@ -62,7 +63,7 @@ select "GitHub Actions", we'll set up the workflow next.
 
 ### Defining the deployment workflow
 
-
+...
 
 
 ## Validate: submit, build & deploy

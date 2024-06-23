@@ -63,9 +63,9 @@ still learning how to write good tutorials, thanks for bearing with me).
 I have tried to keep this accessible and useful regardless of whether you are new
 to learning programming, while still trying to be direct and useful for those
 who mostly want to learn the particulars of Vue3 and VitePress.
-I will be assuming that
+I will be assuming that:
 
- - You've had some introduction to HTML, CSS and JavaScript
+ - You've had some introduction to HTML, CSS and JavaScript.
 
    This is not a full web development tutorial because there is a lot of
    material that I will not have room to cover.  I will, however, be going 
@@ -77,13 +77,14 @@ I will be assuming that
    [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics), 
    [CSS](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics), and
    [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics).
-   These should get you up to speed enough to follow along with this tutorial.
+   Even if you only read the overview pages, that should inform you enough to
+   follow along with this tutorial.
    MDN's reference documents are also excellent for learning a specific element
    or function that you find referenced here, if it's core web technology.  Any
    Vue3-specific elements will be called out as such, so that you know which
    documentation to refer to for further details.
 
- - You have a GitHub account and can create a repository and save code to it
+ - You have a GitHub account and can create a repository and save code to it.
 
    This is also a little outside the scope of this tutorial, but GitHub's own
    documentation is very useful to get you up to speed here.  I would suggest
