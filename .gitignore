@@ -1,6 +1,6 @@
 # vitepress 
-.vitepress/theme
 .vitepress/cache
+.vitepress/dist
 
 # Logs
 logs
