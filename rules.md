@@ -1,0 +1,14 @@
+---
+title: Rules of Number Scrabble
+author: Kevin Damm
+
+---
+
+# Rules of Number Scrabble
+
+1. Two players alternate turns, picking an available number from 1 to 9
+
+2. Players cannot choose a number that has already been chosen by either player
+
+3. The first player to collect three numbers that sum to 15 wins
+   If the player has four or five numbers, any set of three counts.
