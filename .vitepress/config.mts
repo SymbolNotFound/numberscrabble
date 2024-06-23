@@ -21,7 +21,7 @@ export default defineConfig({
       {
         text: 'How To',
         items: [
-          { text: 'ToC', link: 'howto' },
+          { text: 'Introduction', link: 'howto' },
           { text: 'Setup', link: 'howto.step1' },
           { text: 'Game Logic', link: 'howto.step2' },
           { text: 'CSS Style', link: 'howto.step3' },
@@ -36,6 +36,8 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kevindamm/number-scrabble' },
+      { icon: { svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FF6D00" d="M42,42H6V6h36V42z"></path><path fill="#FFF" d="M28 14L24 22.1 19.9 14 16 14 21.9 26 22 26 22 34 26 34 26 26 31.9 14z"></path></svg>' },
+        link: 'https://news.ycombinator.com/threads?id=kevindamm' },
       { icon: 'linkedin', link: 'https://linkedin.com/in/kevindamm'}
     ],
     footer: {
