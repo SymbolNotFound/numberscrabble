@@ -25,7 +25,7 @@ this because it strikes a nice balance between flexibility/capability and the
 amount of setup required to get things going.  You can substitute it for
 just about any other web framework, but I will be showing off some very useful
 Vue3-specific features that will be a little more difficult to port directly
-to most frameworks.  This decision is admittedly a little selfish because I
+to most frameworks.  This decision is admittedly a little selfish &ndash; I
 want the additional practice-hours in Vue3 because I have decided to use it in
 a few larger projects.  If you're here to learn more about Vue3 or VitePress,
 that will work out nicely!
@@ -157,7 +157,7 @@ const steps = [
 ]
 </script>
 
-<style>
+<style scoped>
 .step {
   padding-bottom: 1em;
 }
