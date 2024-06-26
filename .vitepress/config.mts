@@ -41,8 +41,8 @@ export default defineConfig({
       { icon: 'linkedin', link: 'https://linkedin.com/in/kevindamm'}
     ],
     footer: {
-      message: 'Released under the Apache 2.0 License',
-      copyright: 'Copyright © 2024 Kevin Damm'
+      message: 'Released under the MIT License',
+      copyright: 'Copyright © 2024 Symbol Not Found'
     }
   }
 })

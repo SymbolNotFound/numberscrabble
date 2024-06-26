@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Number Scrabble"
   text: 
-  tagline: "play a classic mathematics game against the computer"
+  tagline: "play a classic mathematics game or make your own"
   actions:
     - theme: brand
       text: Play
