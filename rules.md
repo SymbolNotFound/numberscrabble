@@ -7,9 +7,9 @@ next: { text: "Play!", link: "play" }
 
 # Rules of Number Scrabble
 
-1. Two players alternate turns, picking an available number from 1 to 9
+1. Two players alternate turns, picking an available number between 1 .. 9 (inclusive).
 
-2. Players cannot choose a number that has already been chosen by either player
+2. Players cannot choose a number that has already been chosen by either player.
 
-3. The first player to collect three numbers that sum to 15 wins
-   If a player has four or five numbers, any set of three counts
+3. The first player to collect three numbers that sum to 15 wins! \
+   If a player has four or five numbers, any set of three counts.

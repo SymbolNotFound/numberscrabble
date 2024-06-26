@@ -1,46 +1,71 @@
 ---
 title: How to create your own Vue3 + VitePress web-based game
 author: Kevin Damm
-next: { text: "Step 1: Setup", link: "howto.step1" }
+next: { text: "Step 1: Deploy", link: "howto.deploy" }
 ---
 
 # Creating your own game using Vue3
 
-Occasionally people have asked me, "How do I get started with programming (or
-web development)?"  or "How do I get started writing video games?"
+People have occasionally asked me, "How do I get started with programming (or
+web development)?"  or "How do I get started with game devlopment?"
 
-My usual advice is to find a project
-that you already really want to build, and then learn the elements and skills
-to get you there.  But, sometimes that's difficult when you're not entirely
-sure what is possible and what is not, what is easier and what is hard.
+My usual advice is to find a project that you already really want to build, and
+then learn the elements and skills to get you there.  But, sometimes that's
+difficult when you're not entirely sure what is possible and what is not,
+what is easier and what is hard.
 
 ---
 
 I made this to serve as a vehicle for showing how to add certain common
 and useful features of a web application, how to host it for free on GitHub,
-and attempt to explain some best practices that I've learned over the years.
+and using many of the best practices that I've learned over the years.
+The intent is that you get a decent starting point, which you've assembled step
+by step, ready to add new functionality but without the tutorial being about a
+particular web application.
 
-I've chosen to use VitePress for
-this because it strikes a nice balance between flexibility/capability and the
-amount of setup required to get things going.  You can substitute it for
-just about any other web framework, but I will be showing off some very useful
-Vue3-specific features that will be a little more difficult to port directly
-to most frameworks.  This decision is admittedly a little selfish &ndash; I
-want the additional practice-hours in Vue3 because I have decided to use it in
-a few larger projects.  If you're here to learn more about Vue3 or VitePress,
-that will work out nicely!
+I've chosen some specific dependencies
 
+ - GitHub for source control and hosting and code review
+   - (optional) using Cloudflare as load balancer & caching & preview server
+ - VitePress as SSG (Static Site Generator) for the documentation
+ - Vue (vue3) as web application framework
+   - (also a consequence of using VitePress)
+ - VueUse for reactive localStorage, chroma.js for color manipulation
+ - Gisqus for embedding comments into pages
+
+
+This is not to imply that these are the best or only solution for a lot of
+applications.  I chose VitePress because it needs minimal setup and allows for
+writing the majority of content in [Markdown](https://www.markdownguide.org/).
+I chose Vue3 because I appreciate its approach to reactive programming and the
+ease of creating single-file components (SFCs).  VitePress also makes it easy
+to blend Markdown and Vue components together seamlessly, which I do throughout
+this site.  GitHub and Cloudflare are rather standard options for the features
+they support but they are hardly the only choices.  The javascript libraries
+were only chosen because they provide specific functionality that would not be
+trivial to write ourselves, and because I wanted to demonstrate the importing of
+third-party utilities as part of the tutorial.  Otherwise, I preferred to keep
+the site's functionality within what (Vue + vanilla.js) can support, with
+explanations for each part of the HTML, CSS and JavaScript implementation.
+
+My motivations were largely for keeping the tutorial content as uncluttered as
+possible, and personal opinions for what I think provide the better developer
+experience.  You are free to substitute other frameworks or libraries that you
+prefer, and if you have a strong reasoning for your preferences please share it 
+in the comments. :call_me_hand:
 
 ---
 
 The tutorial will be divided into the following steps:
+<a id="todos" @click="clear" href="#todos" style="text-decoration: none; float: right;">
+(clear :heavy_check_mark:s)
+</a>
 
-<div v-for="obj in steps" key="obj.id" class="step">
-  <input type="checkbox" id="obj.url" :checked="!!obj.done">
-  <label for="obj.url">&nbsp;{{ obj.desc }}</label>
-  <span v-if="obj.ready">&nbsp;(<a :href="obj.url">Step {{obj.id}}</a>)</span>
+<div v-for="(obj, i) in steps" :key="obj.id" class="step">
+  <input type="checkbox" :id="obj.id" :checked="!!obj.done">
+  <label :for="obj.id">&nbsp;{{ obj.desc }}</label>
+  <span v-if="obj.ready">&nbsp;(<a :href="`howto${obj.id}`">Step {{i+1}}</a>)</span>
 </div>
-
 
 ---
 
@@ -62,7 +87,7 @@ still learning how to write good tutorials, thanks for bearing with me).
 
 I have tried to keep this accessible and useful regardless of whether you are new
 to learning programming, while still trying to be direct and useful for those
-who mostly want to learn the particulars of Vue3 and VitePress.
+who mostly want to learn the particulars of the chosen dependencies.
 I will be assuming that:
 
  - You've had some introduction to HTML, CSS and JavaScript.
@@ -111,54 +136,55 @@ interface TutorialSteps {
 
 const steps = [
   {
-    id: 1,
-    url: "howto.step1",
+    id: "deploy",
     desc: "Set up VitePress as a Static Site Generator (SSG) with automatic deployment",
     done: true,
     ready: true
   },
   {
-    id: 2,
-    url: "howto.step2",
+    id: "logic",
     desc: "Author a Vue3 Component and embed it in the markdown of a page",
     done: true,
-    ready: false
   },
   {
-    id: 3,
-    url: "howto.step3",
+    id: "style",
     desc: "Add some CSS styling to the component's template",
-    ready: false
   },
   {
-    id: 4,
-    url: "howto.step4",
-    desc: "Add interactivity for player's inputs",
-    ready: false
+    id: "interact",
+    desc: "Add interactivity and animations",
   },
   {
-    id: 5,
-    url: "howto.step5",
+    id: "think",
     desc: "Add a decision-making process for the AI",
-    ready: false
   },
   {
-    id: 6,
-    url: "howto.step6",
+    id: "persist",
     desc: "Use LocalStorage to remember the player's preferences and current game state",
-    ready: false
   },
   {
-    id: 7,
-    url: "howto.step7",
-    desc: "Adding commenting/feedback to pages by integrating Gisqus and GitHub Discussions",
-    ready: false
+    id: "discuss",
+    desc: "Use Gisqus to allow visitor comments (hosted by GitHub Discussions)"
+  },
+  {
+    id: "epilogue",
+    desc: "Some final thoughts, analysis of the game and the technologies being used",
   }
 ]
+
+function clear() {
+  for (const obj of steps) {
+    const el = document.getElementById(obj.id)
+    if (el) {
+      el.checked = false
+    }
+  }
+}
+
 </script>
 
 <style scoped>
 .step {
-  padding-bottom: 1em;
+  margin-bottom: 1em;
 }
 </style>
