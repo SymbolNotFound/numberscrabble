@@ -6,6 +6,7 @@ export default defineConfig({
   description: "play a classic mathematics game against the computer",
   base: "/number-scrabble/",
   lang: "en-US",
+  cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
     nav: [],
@@ -22,13 +23,13 @@ export default defineConfig({
         text: 'How To',
         items: [
           { text: 'Introduction', link: 'howto' },
-          { text: 'Setup', link: 'howto.step1' },
-          { text: 'Game Logic', link: 'howto.step2' },
-          { text: 'CSS Style', link: 'howto.step3' },
-          { text: 'Interaction', link: 'howto.step4' },
-          { text: 'Game AI', link: 'howto.step5' },
-          { text: 'LocalStorage', link: 'howto.step6' },
-          { text: 'Commenting', link: 'howto.step7' },
+          { text: 'Setup & Deploy', link: 'howto.deploy' },
+          { text: 'Game Logic', link: 'howto.logic' },
+          { text: 'CSS Style', link: 'howto.style' },
+          { text: 'Interaction', link: 'howto.interact' },
+          { text: 'Game AI', link: 'howto.think' },
+          { text: 'LocalStorage', link: 'howto.persist' },
+          { text: 'Commenting', link: 'howto.discuss' },
           { text: 'Epilogue', link: 'howto.epilogue' }
         ]
       }
