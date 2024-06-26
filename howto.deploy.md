@@ -263,7 +263,7 @@ permissions to the repository that you've granted them, and you can always
 disconnect Cloudflare by revoking the auth token within GitHub's settings
 (see [GitHub docs about reviewing OAuth apps](https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/reviewing-your-authorized-oauth-apps) for further instructions).
 
-![example of auth questions and permissions granted](img/AuthorizeCloudflarePages.png)
+![Cloudflare asks for which repositories to access, and requests (access to code & metadata) + (read and write for "checks, deployments and pull requests")](./img/AuthorizeCloudflarePages.png "example of auth questions and permissions granted")
 
 Note that you will need to have pushed at least once to GitHub for it to have
 a branch definition.  Cloudflare looks up the available branches for you to
