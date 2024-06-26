@@ -4,7 +4,6 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Number Scrabble",
   description: "play a classic mathematics game against the computer",
-  base: "/number-scrabble/",
   lang: "en-US",
   cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
