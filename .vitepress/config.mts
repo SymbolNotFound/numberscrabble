@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Number Scrabble",
   description: "play a classic mathematics game against the computer",
+  // base: "/numberscrabble/",
   lang: "en-US",
   cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
@@ -11,11 +12,11 @@ export default defineConfig({
     nav: [],
     sidebar: [
       {
-        text: 'About',
+        text: 'Game',
         items: [
+          { text: 'Play', link: '/play' },
           { text: 'Rules', link: '/rules' },
-          { text: 'Exercises', link: '/exercises' },
-          { text: 'Author', link: 'https://github.com/kevindamm/'}
+          { text: 'Source', link: 'https://github.com/SymbolNotFound/numberscrabble'}
         ]
       },
       {
@@ -35,7 +36,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/kevindamm/number-scrabble' },
+      { icon: 'github', link: 'https://github.com/kevindamm' },
       { icon: { svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="#FF6D00" d="M42,42H6V6h36V42z"></path><path fill="#FFF" d="M28 14L24 22.1 19.9 14 16 14 21.9 26 22 26 22 34 26 34 26 26 31.9 14z"></path></svg>' },
         link: 'https://news.ycombinator.com/threads?id=kevindamm' },
       { icon: 'linkedin', link: 'https://linkedin.com/in/kevindamm'}
