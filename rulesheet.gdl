@@ -1,0 +1,72 @@
+                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                       %%      Number Scrabble       %%
+                       %% GDL authored by Kevin Damm %%
+                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% There are two players and no randomness.
+role(first)
+role(second)
+
+%% Players may select and collect any of the valid numbers.
+action(select(N)) :- number(N)
+base(has(first, N)) :- number(N)
+base(has(second, N)) :- number(N)
+
+%% The turn relation designates which player is currently choosing.
+base(turn(R)) :- role(R)
+
+%% Initial conditions: all numbers are available and first player goes first.
+init(available(N)) :- number(N)
+init(turn(first))
+
+
+%% During each turn, the player may choose any unchosen number, using it as
+%% a possible contributor for making 15 from any set of three.
+input(Player, select(Num)) :-
+   turn(Player) & role(Anyone) & available(Num)
+   ==> ~available(Num) & has(Player, Num)
+
+%% Players alternate turns, waiting when it is not their turn.
+input(second, wait) :- turn(first)
+   ==> ~turn(first)
+     & turn(second)
+input(first, wait) :- turn(second)
+   ==> ~turn(second)
+     & turn(first)
+
+
+%% The game ends when a player gets a sum of 15 from any three of their choices.
+terminal :- role(Player) & total15(Player)
+terminal :- ~ready()
+
+%% The player to reach 15 wins; both players lose if it ends in a draw.
+goal(Player, 100) :- total15(Player)
+goal(Player, 0) :- ~total15(Player)
+
+ready() :- number(Num) & available(Num)
+
+%% GDL doesn't know about arithmetic; tell it only what it needs to know.
+%% We could express this in Peano arithmetic but that's overkill for this game.
+%% Perhaps if we wanted arbitrary sum-to values it would be useful to do the
+%% unary counting via nesting relations... but I'd rather extend the language.
+total15(R) :- has(R, 9) & has(R, 5) & has(R, 1)
+total15(R) :- has(R, 9) & has(R, 4) & has(R, 2)
+total15(R) :- has(R, 8) & has(R, 6) & has(R, 1)
+total15(R) :- has(R, 8) & has(R, 5) & has(R, 2)
+total15(R) :- has(R, 8) & has(R, 4) & has(R, 3)
+total15(R) :- has(R, 7) & has(R, 6) & has(R, 2)
+total15(R) :- has(R, 7) & has(R, 5) & has(R, 3)
+total15(R) :- has(R, 6) & has(R, 5) & has(R, 4)
+
+%% Facts: the valid numbers in this game.
+%% Although GDL does have numeric representations for values 1 through 100, we
+%% need a specialized relation for indicating the valid range *for this game*.
+number(1)
+number(2)
+number(3)
+number(4)
+number(5)
+number(6)
+number(7)
+number(8)
+number(9)
