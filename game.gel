@@ -1,0 +1,42 @@
+                       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                       ;;      Number Scrabble       ;;
+                       ;; GEL authored by Kevin Damm ;;
+                       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Two players, no randomness.
+role left, right {
+  choices: []Choice
+  control: bool
+}
+
+;; Turn-based play with left player choosing first.
+init left.control = true
+
+type Choice = unique {1..9}
+
+;; Each player chooses from the numbers 1 to 9, which can only be chosen once.
+role(?p) -> choose(?number)
+  :: ?p.control && available(?number)
+  ==> ?p.choices += ?number
+
+available(?n: Choice) :- ?n not in left.choices && ?n not in right.choices
+
+;; When it is not the player's turn, they have to wait until it is.
+role(?p: role) -> wait
+  :: (?o: role) =/= ?p && ?o.control
+  ==> {
+    ~?o.control
+    ?p.control
+  }
+
+;; The game ends when a player gets a total of 15 points (with 3 numbers)
+terminal :- total15(?player)
+;; or when there are no more numbers to choose from.
+terminal :- #available(_) =>= 1
+
+;; Payout is all-or-nothing, with no reward when there's a draw.
+?player $100 :- total15(?player)
+?player $0 :- not total15(?player)
+
+;; View for finding a sum of 15 with three of the player's numbers.
+total15(?player: role) :- sum(3 of ?player.choices) === 15
